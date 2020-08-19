@@ -2,10 +2,10 @@ import * as functions from "firebase-functions";
 import * as admin from "firebase-admin";
 import * as corsModule from "cors";
 const cors = corsModule({ origin: true });
-const adminPass = functions.config().cms.pass;
-const db = admin.firestore();
 
 admin.initializeApp();
+const db = admin.firestore();
+
 
 /**
  * Checks the authentication of a header.
@@ -22,4 +22,4 @@ const VerifyAuth = async (header: string) => {
   });
 };
 
-export { admin, functions, cors, adminPass, VerifyAuth, db };
+export { admin, functions, cors, VerifyAuth, db };
