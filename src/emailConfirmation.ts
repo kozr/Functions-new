@@ -1,9 +1,9 @@
 import { admin, functions, db, adminPass } from "./util.js";
 import { Change } from "firebase-functions";
-import { DocumentSnapshot } from "@google-cloud/firestore";
 
 import * as nodemailer from "nodemailer";
 import Mail = require("nodemailer/lib/mailer");
+import { DocumentSnapshot } from "firebase-functions/lib/providers/firestore";
 
 const applicantUpdateUrl = functions.config().slack.applicant;
 /**
@@ -84,7 +84,7 @@ const SendConfirmationEmail = async (email: String) => {
 
   //Send the email and handle errors
   return new Promise((resolve, reject) => {
-    transporter.sendMail(mailOptions as Mail.Options, function(error, info) {
+    transporter.sendMail(mailOptions as Mail.Options, function (error, info) {
       if (error) {
         console.log(error);
         reject();
