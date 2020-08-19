@@ -2,10 +2,9 @@ import * as functions from "firebase-functions";
 import * as admin from "firebase-admin";
 import * as corsModule from "cors";
 const cors = corsModule({ origin: true });
-// const adminPass = functions.config().cms.pass;
+
 admin.initializeApp();
 const db = admin.firestore();
-
 
 
 /**
