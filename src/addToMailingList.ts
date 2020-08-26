@@ -12,11 +12,12 @@ const emailRegExp = new RegExp(/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/);
 export default functions.https.onRequest(async (request, response) => {
 
   if (request.method !== 'POST') {
-    response.status(500).send('Invalid method.');
+    response.status(500).send('Invalid request.');
     return;
-  }
-
-  if (!request.body || !emailRegExp.test(request.body.email)) {
+  } else if (request.body.email === '') {
+    response.status(500).send('Please input an email.');
+    return;
+  } else if (!emailRegExp.test(request.body.email)) {
     response.status(400).send('Email is invalid.');
     return;
   }
@@ -30,11 +31,12 @@ export default functions.https.onRequest(async (request, response) => {
     
     response.status(200).send('Thanks for subscribing!');
   } catch (error) {
-    const { message } = error;
-    
+    const { body: { message } } = error.response;
+    console.error(message);
+
     switch (message) {
       case 'Contact already exist':
-        response.status(502).send('You\'ve already subscribed');
+        response.status(502).send('You\'ve already subscribed.');
       default:
         response.status(502).send(message);
     }
