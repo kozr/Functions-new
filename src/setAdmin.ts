@@ -6,5 +6,7 @@ export default functions.https.onCall(async (data: any, context: CallableContext
     const userEmail = context?.auth?.token?.email;
     if (userID != undefined && /.+@nwplus\.io$/.test(userEmail)) {
         await admin.auth().setCustomUserClaims(userID, { admin: true });
+        return { isAdmin: true };
     }
+    return { isAdmin: false };
 })
