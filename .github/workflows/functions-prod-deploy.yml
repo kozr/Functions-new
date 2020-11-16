@@ -30,6 +30,6 @@ jobs:
     - name: deploy
       run: |
             npm install -g firebase-tools@latest
-            firebase deploy --only functions
+            firebase deploy --only functions -P nwplus-ubc
       env:
         FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN_PROD }}
