@@ -4,6 +4,7 @@ This repo stores all the cloud functions for our current database. New cloud fun
 ## Getting started
 ### Firebase tools
 Make sure you have firebase tools installed.
+
 ```yarn global add firebase-tools```
 
 ### Setting env variables
@@ -30,12 +31,15 @@ In that case, use [NVM](https://github.com/nvm-sh/nvm/blob/master/README.md) to 
 After making changes and adding any new functions to `src/index.ts`, you can follow these steps to deploy them to our database:
 
 * Choose the appropriate database you want to deploy to:
+
 ```firebase use <dbName>```
 
 * Run the functions locally to test them:
+
 ```yarn serve```
 
 * Deploy!
+
 ```yarn deploy```
 
 ## Contributing
