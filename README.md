@@ -19,6 +19,13 @@ To actually access the env variables inside a function, run this:
 
 ```functions.config().<serviceName>.<variableName>```
 
+### Node versions
+There might be an error during the deploy stage resembling:
+
+```The engine "node" is incompatible with this module. Expected... Got... ```
+
+In that case, use [NVM](https://github.com/nvm-sh/nvm/blob/master/README.md) to change the version of Node and run the deploy command again.
+
 ## Deploying
 After making changes and adding any new functions to `src/index.ts`, you can follow these steps to deploy them to our database:
 
